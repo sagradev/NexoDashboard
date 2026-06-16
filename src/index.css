@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-base: #0A0A0A;
+  --bg-card: #161616;
+  --bg-card-alt: #1A1A1A;
+  --bg-deep: #050505;
+  --purple: #7B3FE4;
+  --purple-light: #9B6FFF;
+  --purple-dim: rgba(123, 63, 228, 0.15);
+  --purple-glow: 0 8px 32px rgba(123, 63, 228, 0.18);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --text-primary: #F5F5F5;
+  --text-secondary: #9A9A9A;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root { width: 100%; min-height: 100vh; }
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(123,63,228,.4); border-radius: 2px; }
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,.6); }
+  50% { box-shadow: 0 0 0 7px rgba(34,197,94,0); }
+}
+@keyframes pulse-yellow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(234,179,8,.6); }
+  50% { box-shadow: 0 0 0 7px rgba(234,179,8,0); }
+}
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,.7); }
+  50% { box-shadow: 0 0 0 7px rgba(239,68,68,0); }
+}
+
+.pulse-green  { animation: pulse-green  2s infinite; }
+.pulse-yellow { animation: pulse-yellow 2s infinite; }
+.pulse-red    { animation: pulse-red    1.4s infinite; }
+
+@keyframes logEntry {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.log-entry { animation: logEntry .3s ease forwards; }
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.count-up { animation: countUp .5s ease forwards; }
+
+.card-hover {
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(123,63,228,.25) !important;
+  border-color: rgba(123,63,228,.4) !important;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeSlideIn .4s ease forwards; }
