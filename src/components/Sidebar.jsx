@@ -8,7 +8,7 @@ const NAV = [
 export default function Sidebar({ view, setView }) {
   return (
     <aside
-      className="hidden md:flex flex-col fixed left-0 top-0 h-full w-56 z-30"
+      className="hidden md:flex flex-col sticky top-0 h-screen w-56 flex-shrink-0 z-30"
       style={{
         background: 'rgba(22,22,22,0.85)',
         backdropFilter: 'blur(16px)',
