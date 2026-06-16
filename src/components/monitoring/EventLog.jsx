@@ -9,10 +9,11 @@ const LEVEL_STYLE = {
 }
 
 export default function EventLog({ logs }) {
-  const bottomRef = useRef(null)
+  const containerRef = useRef(null)
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+    const el = containerRef.current
+    if (el) el.scrollTop = el.scrollHeight
   }, [logs])
 
   return (
@@ -26,16 +27,16 @@ export default function EventLog({ logs }) {
     >
       <div className="flex items-center gap-2 mb-4">
         <div
-          className="w-8 h-8 rounded-lg flex items-center justify-center"
+          className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
           style={{ background: 'var(--purple-dim)', border: '1px solid rgba(123,63,228,.25)' }}
         >
           <Terminal size={15} style={{ color: 'var(--purple-light)' }} />
         </div>
-        <div>
+        <div className="min-w-0">
           <h3 className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>Log de Eventos</h3>
           <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>Console em tempo real</p>
         </div>
-        <div className="ml-auto flex gap-1.5">
+        <div className="ml-auto flex gap-1.5 flex-shrink-0">
           {['#ef4444','#eab308','#22c55e'].map(c => (
             <span key={c} className="w-3 h-3 rounded-full" style={{ background: c, opacity: 0.7 }} />
           ))}
@@ -43,7 +44,8 @@ export default function EventLog({ logs }) {
       </div>
 
       <div
-        className="flex-1 overflow-y-auto rounded-xl p-4 font-mono text-xs flex flex-col gap-1.5"
+        ref={containerRef}
+        className="overflow-y-auto rounded-xl p-4 font-mono text-xs flex flex-col gap-1.5"
         style={{
           background: 'var(--bg-deep)',
           border: '1px solid rgba(255,255,255,0.05)',
@@ -63,14 +65,12 @@ export default function EventLog({ logs }) {
             </div>
           )
         })}
-        <div ref={bottomRef} />
       </div>
 
-      {/* Legend */}
       <div className="flex gap-4 mt-3 flex-wrap">
         {Object.entries(LEVEL_STYLE).map(([k, v]) => (
           <span key={k} className="flex items-center gap-1.5 text-xs">
-            <span className="w-2 h-2 rounded-full" style={{ background: v.color }} />
+            <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: v.color }} />
             <span style={{ color: 'var(--text-secondary)' }} className="capitalize">{k}</span>
           </span>
         ))}

@@ -24,7 +24,7 @@ export default function AnalyticsView() {
   const data = analyticsData[period]
 
   return (
-    <div className="fade-in flex flex-col gap-6">
+    <div className="fade-in flex flex-col gap-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -60,7 +60,7 @@ export default function AnalyticsView() {
       </div>
 
       {/* Metric cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-5">
         {METRIC_CONFIG.map(({ key, label, icon, type }) => (
           <MetricCard
             key={`${key}-${period}`}
@@ -74,7 +74,7 @@ export default function AnalyticsView() {
       </div>
 
       {/* Charts row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
         <div className="lg:col-span-2">
           <RevenueChart data={data.series} metric="receita" />
         </div>

@@ -88,7 +88,7 @@ export default function MonitoringView() {
   const enrichedServers = servers.map(s => ({ ...s, status: statuses[s.id] || 'online' }))
 
   return (
-    <div className="fade-in flex flex-col gap-6">
+    <div className="fade-in flex flex-col gap-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
@@ -119,14 +119,14 @@ export default function MonitoringView() {
       </div>
 
       {/* Server cards grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
         {enrichedServers.map(server => (
           <ServerCard key={server.id} server={server} />
         ))}
       </div>
 
       {/* Chart + Log */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 xl:grid-cols-5 gap-5">
         <div className="lg:col-span-3">
           <RealtimeChart series={series} />
         </div>
@@ -136,7 +136,7 @@ export default function MonitoringView() {
       </div>
 
       {/* Topology */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <TopologyMap serverStatuses={statuses} />
 
         {/* Quick stats */}

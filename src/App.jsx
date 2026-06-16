@@ -14,7 +14,7 @@ export default function App() {
 
       {/* Main content — offset for sidebar on desktop */}
       <main
-        className="flex-1 min-w-0 pb-20 md:pb-0 overflow-x-hidden"
+        className="flex-1 min-w-0 pb-20 md:pb-0"
       >
         {/* Top bar (mobile only) */}
         <div
